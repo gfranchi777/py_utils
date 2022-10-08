@@ -3,54 +3,58 @@ import numpy as np
 from math_utils.grid import Grid
 
 class Cube:
-    #
-    # Variables
-    #
-
-    cube = {
-        "F": Grid,
-        "B": Grid,
-        "U": Grid,
-        "D": Grid,
-        "L": Grid,
-        "R": Grid
-    }
-
-    cube_faces = {
-        "F": 0,
-        "B": 1,
-        "U": 2,
-        "D": 3,
-        "L": 4,
-        "R": 5
-    }
-
-    np_cube: np.ndarray[int]
-
-    #
-    # Functions
-    #
-
     def __init__(self, length: int) -> None:
-        self.initializeCube(length)
+        self.cube = {
+            "F": Grid,
+            "B": Grid,
+            "U": Grid,
+            "D": Grid,
+            "L": Grid,
+            "R": Grid
+        }
 
-    def getLength(self):
-        return self.length
+        self.cube_faces = {
+            "F": 0,
+            "B": 1,
+            "U": 2,
+            "D": 3,
+            "L": 4,
+            "R": 5
+        }
 
-    def getCubeBoundaries(self) -> list[int]:
+        self.np_cube: np.ndarray[int] 
+
+        self.cube_boundaries: list[int]
+
+        self.initialize_cube(length)
+
+    @property
+    def np_cube(self) -> np.ndarray[int]:
+        return self.__np_cube
+    
+    @np_cube.setter
+    def np_cube(self, np_cube: np.ndarray[int]) -> None:
+        self.__np_cube = np_cube
+
+    @property
+    def cube_boundaries(self) -> list[int]:
         return [self.np_cube.shape[0], self.np_cube.shape[1], self.np_cube.shape[2]]
 
+    @cube_boundaries.setter
+    def cube_boundaries(self, cube_boundaries: list[int]) -> None:
+        self.__cube_boundaries = cube_boundaries
+
     @staticmethod
-    def isValidLength(length: int) -> bool:
+    def is_valid_length(length: int) -> bool:
         return length > 1
 
-    def initializeCube(self, length: int) -> None:
-        if self.isValidLength(length):
+    def initialize_cube(self, length: int) -> None:
+        if self.is_valid_length(length):
             for side in self.cube:
                 for row in range(length):
                     self.cube[side] = Grid(length, length)
 
-    def numpyInitializeCube(self, length: int) -> None:
+    def numpy_initialize_cube(self, length: int) -> None:
         self.np_cube = np.zeros((6, length, length), dtype=int)
 
     def printCube(self) -> None:

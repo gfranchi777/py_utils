@@ -1,6 +1,8 @@
 from math_utils.cube import Cube
 
-
+"""
+Script used to test the cube.py modules Cube class
+"""
 def main() -> None:
     cube_length = 3
 
