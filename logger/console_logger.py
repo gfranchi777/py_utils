@@ -1,36 +1,30 @@
 from datetime import datetime
-from logger.logger import MessageType, LogMessage
+
+import pytz
+from utils.logger.logger import LogMessage, MessageType, TimeZone
+
 
 class ConsoleLogger:
 
-    _calling_class: str
-
     def __init__(self, calling_class: str) -> None:
-       self._calling_class = calling_class
+        self._log_message = LogMessage(calling_class)
+
+    def _log(self, message_type: MessageType, calling_method: str, message: str) -> None:
+        print(self._prepare_log(message_type, calling_method, message))
+
+    def _prepare_log(self, message_type: MessageType, calling_method: str, message: str) -> LogMessage:
+        self._log_message.timestamp = datetime.now(pytz.timezone(TimeZone.EASTERN_STANDARD.value))
+        self._log_message.type = message_type
+        self._log_message.calling_method = calling_method
+        self._log_message.message = message
+
+        return self._log_message
 
     def debug(self, calling_method: str, message: str) -> None:
-        log_message = LogMessage(timestamp=datetime.now(), type=MessageType.DEBUG, 
-                                 calling_class = self._calling_class, calling_method=calling_method,
-                                 message=message)
+        self._log(MessageType.DEBUG, calling_method, message)
 
-        print(log_message)
-
-        del log_message
-    
-    def error(self,calling_method: str,  message: str) -> None:
-        log_message = LogMessage(timestamp=datetime.now(), type=MessageType.ERROR, 
-                                 calling_class = self._calling_class, calling_method=calling_method,
-                                 message=message)
-
-        print(log_message)
-
-        del log_message
+    def error(self, calling_method: str, message: str) -> None:
+        self._log(MessageType.ERROR, calling_method, message)
 
     def info(self, calling_method: str, message: str) -> None:
-        log_message = LogMessage(timestamp=datetime.now(), type=MessageType.INFO, 
-                                 calling_class = self._calling_class, calling_method=calling_method,
-                                 message=message)
-
-        print(log_message)
-    
-        del log_message
+        self._log(MessageType.INFO, calling_method, message)
