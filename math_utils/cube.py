@@ -1,6 +1,6 @@
 import numpy as np
+from utils.math_utils.grid import Grid
 
-from math_utils.grid import Grid
 
 class Cube:
     def __init__(self, length: int) -> None:

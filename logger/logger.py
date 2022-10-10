@@ -12,7 +12,7 @@ class MessageType(Enum):
 class TimeZone(Enum):
     CENTRAL_STANDARD = "America/Winnipeg",
     EASTERN_STANDARD = "America/Montreal"
-
+    
 @dataclass
 class LogMessage:
     timestamp: datetime = field(init=False)
@@ -31,7 +31,7 @@ class Logger(Protocol):
         ...
 
     """Function which will output the log entry"""
-    def _log(self, message_type: MessageType, calling_method: str, message: str) -> None:
+    def _log(self, log_message: LogMessage) -> None:
         ...
 
     """ Function which will build a LogMessage """

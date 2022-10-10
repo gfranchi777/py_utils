@@ -3,8 +3,8 @@ from utils.logger.logger import Logger
 
 
 def main() -> None:
-    file_logger = FileLogger("test_file_logger")
-
+    file_logger = FileLogger("test_file_logger", "test_log.txt")
+ 
     test_protocol(file_logger)
 
 def test_protocol(logger: Logger) -> None:

@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"python.analysis.typeCheckingMode": "strict",
+		"python.analysis.typeCheckingMode": "basic",
 		"editor.formatOnSaveMode": "file",
 		"editor.formatOnSave": true,
 		"editor.codeActionsOnSave": {
@@ -13,6 +13,6 @@
 		},
 		"python.linting.pylintEnabled": true,
 		"python.linting.enabled": true,
-		"python.formatting.provider": "black"
+		"python.formatting.provider": "black",
 	}
 }

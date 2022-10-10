@@ -1,0 +1,3 @@
+2022-10-10 05:46:26 [DEBUG] test_file_logger.test_protocol() - This Is A Debug Message
+2022-10-10 05:46:26 [ERROR] test_file_logger.test_protocol() - This Is An Error Message
+2022-10-10 05:46:26 [INFO] test_file_logger.test_protocol() - This Is An Info Message
