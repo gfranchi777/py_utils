@@ -7,7 +7,7 @@ class GridValues(Enum):
     INITIAL_VALUE = 0
 
 class Grid:
-    
+
     def __init__(self, length: int, width: int) -> None:
         self._is_initialized: bool
         self._length = length
@@ -33,7 +33,7 @@ class Grid:
     @length.setter
     def length(self, length: int) -> None:
         self._length = length
-    
+
     @property
     def width(self) -> int:
         return self._width
@@ -116,9 +116,9 @@ class Grid:
             self.is_initialized = True
 
     def reset_values(self) -> None:
-        for row in range(self.length):
-            for col in range(self.width):
-                self.set_value_at_index([row, col], GridValues.INITIAL_VALUE.value)
+        for row, row_val in enumerate(self.grid):
+            for col, col_val in enumerate(row_val):
+                self.set_value_at_index([row, col_val], GridValues.INITIAL_VALUE.value)
 
     def print_information(self) -> None:
         pass
@@ -126,17 +126,17 @@ class Grid:
     def print_coordinates(self) -> None:
         padding = len(str(max(self.max_horizontal_boundary, self.max_vertical_boundary)))
 
-        for row in range(self.length):
-            for col in range(self.width):
-                print(f'[{row:0{padding}},{col:0{padding}}] ', end='')
+        for row, row_val in enumerate(self.grid):
+            for col, col_val in enumerate(row_val):
+                print(f'[{row:0{padding}},{col_val:0{padding}}] ', end='')
             print()
         print()
 
     def print_values(self) -> None:
-        for row in range(self.length):
+        for row, row_val in enumerate(self.grid):
             print('[', end='')
-            for col in range(self.width):
-                print(f'{self.get_value_at_index([row, col])}', end='')
+            for col, col_val in enumerate(row_val):
+                print(f'{self.get_value_at_index([row, col_val])}', end='')
 
                 if col < self.max_vertical_boundary:
                     print(',', end='')

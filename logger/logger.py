@@ -12,7 +12,7 @@ class MessageType(Enum):
 class TimeZone(Enum):
     CENTRAL_STANDARD = "America/Winnipeg",
     EASTERN_STANDARD = "America/Montreal"
-    
+
 @dataclass
 class LogMessage:
     timestamp: datetime = field(init=False)

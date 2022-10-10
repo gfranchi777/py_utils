@@ -6,7 +6,7 @@ from utils.logger.logger import LogMessage, MessageType, TimeZone
 
 class FileLogger:
     _output_file: str
-    
+
     """ Initializer """
     def __init__(self, calling_class: str, output_file: str) -> None:
         self._log_message = LogMessage(calling_class=calling_class)

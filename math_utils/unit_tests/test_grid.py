@@ -1,6 +1,5 @@
-import timeit
 
-from math_utils.grid import Grid
+from utils.math_utils.grid import Grid
 
 """
 Script used to test the grid.py modules Grid class
