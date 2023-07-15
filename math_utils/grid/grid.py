@@ -1,11 +1,15 @@
+"""Module grid
+"""
 import random
 import sys
 from enum import Enum
 
 import numpy
 
-
 class GridTypes(Enum):
+    """Define the types of grids that are supported.
+    Each GridType is a dictionary containing a data_type and initial_value.
+    """
     INT = {
         "data_type": int,
         "initial_value": 0
@@ -18,6 +22,22 @@ class GridTypes(Enum):
 
 
 class Grid:
+    """Create a grid of size length x width and of type GridType
+    
+        Args:
+            length:
+                The number of rows in the grid.
+            width:
+                The number of colums in the grid.
+            grid_type:
+                The type of grid we will create (GridTypes datatype).
+        
+        Returns:
+            None
+
+        Raises:
+            None
+    """
     def __init__(self, length: int, width: int, grid_type: GridTypes) -> None:
         if self.is_valid_dimension(length, width):
             self._is_initialized = False

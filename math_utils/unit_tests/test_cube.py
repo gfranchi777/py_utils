@@ -1,9 +1,19 @@
-from math_utils.cube import Cube
+"""Module used for testing Cube class
+"""
+from python_utils.math_utils.cube.cube import Cube
 
-"""
-Script used to test the cube.py modules Cube class
-"""
 def main() -> None:
+    """Create an instance of the Cube class and test some of it's functions.
+    
+        Args: 
+            None
+
+        Returns: 
+            None
+    
+        Raises:
+            None
+    """
     cube_length = 3
 
     cube = Cube(cube_length)
