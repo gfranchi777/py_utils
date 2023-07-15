@@ -1,4 +1,4 @@
-from utils.math_utils.cube import Cube
+from math_utils.cube import Cube
 
 """
 Script used to test the cube.py modules Cube class

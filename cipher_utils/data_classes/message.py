@@ -1,8 +1,12 @@
+"""Dataclass used to represent a cleat text or cipher text message.
+"""
 from dataclasses import dataclass
 
 
 @dataclass
 class Message:
+    """Dataclass used to represent a cleat text or cipher text message.
+    """
     _message: str
 
     def __init__(self, message: str):

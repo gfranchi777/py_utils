@@ -1,4 +1,4 @@
-from utils.math_utils.grid import Grid, GridTypes
+from .grid import Grid, GridTypes
 
 
 class IntGrid(Grid):

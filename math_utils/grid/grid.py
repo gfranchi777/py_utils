@@ -6,8 +6,15 @@ import numpy
 
 
 class GridTypes(Enum):
-    INT = int
-    STRING = str
+    INT = {
+        "data_type": int,
+        "initial_value": 0
+    }
+
+    STRING = {
+        "data_type": str,
+        "initial_value": ''
+    }
 
 
 class Grid:
@@ -16,8 +23,9 @@ class Grid:
             self._is_initialized = False
             self._length = length
             self._width = width
+            self._type = grid_type
 
-            self._grid = numpy.empty((length, width), dtype=grid_type.value)
+            self._grid = numpy.empty((length, width), dtype=grid_type.value["data_type"])
         else:
             sys.exit(
                 "Invalid Grid Dimensions.\n \
@@ -35,7 +43,7 @@ class Grid:
     @grid.setter
     def grid(self, grid: object) -> None:
         self.grid = grid
-
+   
     @property
     def length(self) -> int:
         return self._length
@@ -51,6 +59,10 @@ class Grid:
     @width.setter
     def width(self, width: int) -> None:
         self.width = width
+
+    @property
+    def type(self) -> GridTypes:
+        return self._type
 
     @property
     def is_initialized(self) -> bool:

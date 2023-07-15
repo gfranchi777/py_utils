@@ -1,5 +1,5 @@
 import numpy as np
-from utils.general.printing import Printing
+from general.printing import Printing
 
 
 def main() -> None:

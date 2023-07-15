@@ -1,5 +1,5 @@
-from utils.cipher_utils.constants import Constants
-from utils.cipher_utils.data_classes.shift_degree import ShiftDegree
+from constants import Constants
+from data_classes.shift_degree import ShiftDegree
 
 
 class Alphabet:
