@@ -7,13 +7,13 @@ import numpy
 
 class GridTypes(Enum):
     INT = {
-        "data_type": int,
+        "data_type": numpy.int_,
         "initial_value": 0
     }
 
     STRING = {
-        "data_type": str,
-        "initial_value": ''
+        "data_type": numpy.str_,
+        "initial_value": '-'
     }
 
 
@@ -31,10 +31,6 @@ class Grid:
                 "Invalid Grid Dimensions.\n \
                      Length And Width Must Be Larger Than 0."
             )
-
-    """
-    Property Getters / Setters
-    """
 
     @property
     def grid(self) -> object:
@@ -96,22 +92,6 @@ class Grid:
     def max_index(self) -> list[int]:
         return [self.max_horizontal_boundary, self.max_vertical_boundary]
 
-    def get_value_at(self, row_col_position: list[int]) -> int:
-        value_at_index = 0
-
-        if self.is_valid_position(row_col_position):
-            value_at_index = self._grid[row_col_position[0]][row_col_position[1]]
-
-        return value_at_index
-
-    def set_value_at(self, row_col_position: list[int], value: int) -> None:
-        if self.is_valid_position(row_col_position):
-            self._grid[row_col_position[0], row_col_position[1]] = value
-
-    """
-    Custom Functions
-    """
-
     def is_valid_dimension(self, length: int, width: int) -> bool:
         is_valid_dimension = False
 
@@ -151,10 +131,10 @@ class Grid:
 
         return random_coords
 
-    def reset_values(self) -> None:
+    def initialize(self) -> None:
         for row, row_val in enumerate(self._grid):
-            for col in row_val:
-                self._grid[row][row_val[col]] = 0
+            for col, col_val in enumerate(row_val):
+                self._grid[row][col] = self.type.value["initial_value"]
 
     def print_coordinates(self) -> None:
         padding = len(
