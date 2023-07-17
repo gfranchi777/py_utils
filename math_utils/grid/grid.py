@@ -2,24 +2,10 @@
 """
 import random
 import sys
-from enum import Enum
 
 import numpy
 
-class GridTypes(Enum):
-    """Define the types of grids that are supported.
-    Each GridType is a dictionary containing a data_type and initial_value.
-    """
-    INT = {
-        "data_type": numpy.int_,
-        "initial_value": 0
-    }
-
-    STRING = {
-        "data_type": numpy.str_,
-        "initial_value": '-'
-    }
-
+from python_utils.math_utils.types.grid_types import GridTypes
 
 class Grid:
     """Create a grid of size length x width and of type GridType
@@ -45,7 +31,8 @@ class Grid:
             self._width = width
             self._type = grid_type
 
-            self._grid = numpy.empty((length, width), dtype=grid_type.value["data_type"])
+            self._grid = numpy.full((length, width), grid_type.value["initial_value"],
+                                    dtype=grid_type.value["data_type"])
         else:
             sys.exit(
                 "Invalid Grid Dimensions.\n \
@@ -162,8 +149,8 @@ class Grid:
         )
 
         for row, row_val in enumerate(self._grid):
-            for col_val in row_val:
-                print(f"[{row:0{padding}},{col_val:0{padding}}] ", end="")
+            for col, col_val in enumerate(row_val):
+                print(f"[{row:0{padding}},{col:0{padding}}] ", end="")
             print()
         print()
 
