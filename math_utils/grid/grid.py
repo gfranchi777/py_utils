@@ -41,65 +41,94 @@ class Grid:
 
     @property
     def grid(self) -> object:
+        """Get _grid"""
         return self._grid
 
     @grid.setter
     def grid(self, grid: object) -> None:
-        self.grid = grid
-   
+        """Set _grid"""
+        self._grid = grid
+
     @property
     def length(self) -> int:
+        """Get _length"""
         return self._length
 
     @length.setter
     def length(self, length: int) -> None:
-        self.length = length
+        """Set _length"""
+        self._length = length
 
     @property
     def width(self) -> int:
+        """Get _width"""
         return self._width
 
     @width.setter
     def width(self, width: int) -> None:
-        self.width = width
+        """Set _width"""
+        self._width = width
 
     @property
     def type(self) -> GridTypes:
+        """Get _type"""
         return self._type
 
     @property
     def is_initialized(self) -> bool:
+        """Get _is_initialized"""
         return self._is_initialized
 
     @is_initialized.setter
     def is_initialized(self, is_intialized: bool) -> None:
+        """Set _is_initialized"""
         self.is_initialized = is_intialized
 
     @property
     def min_horizontal_boundary(self) -> int:
-        return self.length - self.length
+        """Get min horizontal bounary"""
+        return 0
 
     @property
     def min_vertical_boundary(self) -> int:
+        """Get minimum vertical boundary"""
         return 0
 
     @property
     def max_horizontal_boundary(self) -> int:
+        """Calculate max horizontal boundary"""
         return self.length - 1
 
     @property
     def max_vertical_boundary(self) -> int:
+        """Calculate max vertical boundary"""
         return self.width - 1
 
     @property
     def min_index(self) -> list[int]:
+        """Get minimum grid index"""
         return [self.min_horizontal_boundary, self.min_vertical_boundary]
 
     @property
     def max_index(self) -> list[int]:
+        """Get maximum grid index"""
         return [self.max_horizontal_boundary, self.max_vertical_boundary]
 
     def is_valid_dimension(self, length: int, width: int) -> bool:
+        """Determine if the dimensions being used to create the grid are valid
+        
+        Args:
+            length: 
+                length of the grid
+
+            width:
+                width of the grid
+        
+        Returns:
+
+            True if the dimensions passed are valid
+            False otherwise
+        """
         is_valid_dimension = False
 
         if length > 0 and width > 0:
@@ -108,6 +137,17 @@ class Grid:
         return is_valid_dimension
 
     def is_valid_position(self, row_col_position: list[int]) -> bool:
+        """Determine if the position being passed is within the grid bounds
+        
+        Args:
+            row_col_position:
+                An array containing an x, y coordinate
+        
+        Returns:
+
+            True if the coordinates are in the boundaries of the grid
+            False otherwise
+        """
         is_valid_position = False
 
         if (
@@ -124,6 +164,16 @@ class Grid:
         return is_valid_position
 
     def gen_random_coordinate(self, num_coords: int) -> list[int]:
+        """Generate random coordinates which fall inside the grid boundaries
+        
+        Args:
+            num_coords:
+                The number of coordinate pairs to generate
+
+        Returns:
+
+            An array containing num_coords pairs of x, y coordinates within the grid boundaries.
+        """
         random_coords = []
 
         for _ in range(num_coords):
@@ -139,11 +189,27 @@ class Grid:
         return random_coords
 
     def initialize(self) -> None:
+        """Initialize the grid by filling it with the initial value specified in the GridTypes
+        
+        Args:
+            None
+        
+        Returns:
+            None
+        """
         for row, row_val in enumerate(self._grid):
             for col, col_val in enumerate(row_val):
                 self._grid[row][col] = self.type.value["initial_value"]
 
     def print_coordinates(self) -> None:
+        """Print out the x,y coordinate pairs in the grid
+        
+        Args:
+            None
+        
+        Returns:
+            None
+        """
         padding = len(
             str(max(self.max_horizontal_boundary, self.max_vertical_boundary))
         )
@@ -155,6 +221,18 @@ class Grid:
         print()
 
     def print_values(self, values: list[list[int]], no_new_line: bool = True) -> None:
+        """Format and print values in the grid using recursion.
+
+        Args:
+            values:
+                The list of a list of int which will will print out
+            
+            no_new_line:
+                Specify if on a given recursion we want to print a new line or not
+        
+        Returns:
+            None
+        """
         if len(values) > 0:
             print(f"{values[0]}", end="")
 
