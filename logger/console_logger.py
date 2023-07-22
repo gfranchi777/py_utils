@@ -1,36 +1,51 @@
+"""Module console_logger
+"""
 from datetime import datetime
 
 import pytz
-from utils.logger.logger import LogMessage, MessageType, TimeZone
+from python_utils.logger.logger import LogMessage, MessageType, TimeZone
 
 
 class ConsoleLogger:
+    """Class ConsoleLogger
+    """
+    @property
+    def log_message(self) -> LogMessage:
+         """Get _log_message"""
+         return self._log_message
+    
+    @log_message.setter
+    def log_message(self, log_message: LogMessage) -> None:
+         """Set _log_message"""
+         self._log_message = log_message
 
-    """ Initializer """
     def __init__(self, calling_class: str) -> None:
-        self._log_message = LogMessage(calling_class)
+        self._log_message: LogMessage
 
-    """Function which will output the log entry"""
+        self.log_message(LogMessage(calling_class))
+
     def _log(self, log_message: LogMessage) -> None:
+        """Output the log entry"""
         print(log_message)
 
-    """ Function which will build a LogMessage """
-    def _prepare_log(self, message_type: MessageType, calling_method: str, message: str) -> LogMessage:
-        self._log_message.timestamp = datetime.now(pytz.timezone(TimeZone.EASTERN_STANDARD.value))
-        self._log_message.type = message_type
-        self._log_message.calling_method = calling_method
-        self._log_message.message = message
+    def _prepare_log(self, message_type: MessageType, 
+                     calling_method: str, message: str) -> LogMessage:
+        """Build a LogMessage"""
+        self.log_message.timestamp = datetime.now(pytz.timezone(TimeZone.EASTERN_STANDARD.value))
+        self.log_message.type = message_type
+        self.log_message.calling_method = calling_method
+        self.log_message.message = message
 
-        return self._log_message
-    
-    """ Function to be called when we want to log a DEBUG message """
+        return self.log_message
+
     def debug(self, calling_method: str, message: str) -> None:
+        """Log a DEBUG message """
         self._log(self._prepare_log(MessageType.DEBUG, calling_method, message))
 
-    """ Function to be called when we want to log an ERROR message """
     def error(self, calling_method: str, message: str) -> None:
+        """Log an ERROR message """
         self._log(self._prepare_log(MessageType.ERROR, calling_method, message))
 
-    """ Function to be called when we want to log an INFO message """
     def info(self, calling_method: str, message: str) -> None:
+        """Log an INFO message """
         self._log(self._prepare_log(MessageType.INFO, calling_method, message))
