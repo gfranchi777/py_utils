@@ -3,13 +3,12 @@
 from python_utils.cipher_utils.data_classes.constants import Constants
 from python_utils.cipher_utils.data_classes.shift_degree import ShiftDegree
 
+import string
+
 class Alphabet:
     """Class Alphabet
     """
-    _alphabet: list[str]
-
-
-    def __init__(self, shift_degree: ShiftDegree):
+    def __init__(self, shift_degree: ShiftDegree) -> None:
         """Generate the alphabet
         
         Args:
@@ -22,7 +21,7 @@ class Alphabet:
         Raises:
             None
         """
-        self.generate_alphabet(shift_degree)
+        self._alphabet = self.generate_alphabet(shift_degree)
 
     @property
     def alphabet(self) -> list[str]:
@@ -40,17 +39,6 @@ class Alphabet:
         """
         return self._alphabet[index]
 
-    def length(self) -> int:
-        """Return the length of _alphabet variable
-
-        Args:
-            None
-
-        Returns:
-            Length of the _alphabet variable
-        """
-        return len(self._alphabet)
-
     def set_char_at(self, index: int, new_char: str) -> None:
         """Replace character at index with a new character
 
@@ -62,9 +50,9 @@ class Alphabet:
         Returns:
             None
         """
-        self.alphabet[index] = new_char
+        self._alphabet[index] = new_char
 
-    def generate_alphabet(self, shift_degree: ShiftDegree) -> None:
+    def generate_alphabet(self, shift_degree: ShiftDegree) -> list[str]:
         """Generate the alphabet array
 
         Args:
@@ -73,18 +61,10 @@ class Alphabet:
         Returns:
             None
         """
-        alphabet = []
+        alphabet = string.ascii_uppercase
 
-        for i in range(Constants.NUM_LETTERS_IN_ALPHABET - shift_degree._shift_degree):
-            alphabet.append(chr((Constants.ASCII_UPPER_CASE_LETTER_START + shift_degree._shift_degree) + i))
+        return list(alphabet[shift_degree.shift_degree:] + alphabet[:shift_degree.shift_degree])
 
-        curr_num_letters = len(alphabet)
-
-        for i in range(curr_num_letters, Constants.NUM_LETTERS_IN_ALPHABET):
-            alphabet.append(chr(Constants.ASCII_UPPER_CASE_LETTER_START + shift_degree._shift_degree -
-                                Constants.NUM_LETTERS_IN_ALPHABET + i))
-
-        self.alphabet = alphabet
 
     def __repr__(self) -> str:
         """Return a string representation of the alphabet array
@@ -101,7 +81,7 @@ class Alphabet:
             if index != (len(self.alphabet) - 1):
                 alphabet_string += f'{val},'
             else:
-                alphabet_string += f'{val}.\n'
+                alphabet_string += f'{val}.'
 
         return alphabet_string
     
