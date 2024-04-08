@@ -1,4 +1,4 @@
-from python_utils.math_utils.grid.grid import Grid, GridTypes
+from pyutils.math_utils.grid.grid import Grid, GridTypes
 
 
 class StringGrid(Grid):

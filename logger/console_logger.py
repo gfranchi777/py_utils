@@ -3,7 +3,7 @@
 from datetime import datetime
 
 import pytz
-from python_utils.logger.logger import LogMessage, MessageType, TimeZone
+from pyutils.logger.logger import LogMessage, MessageType, TimeZone
 
 
 class ConsoleLogger:

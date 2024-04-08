@@ -1,6 +1,6 @@
 """Module used for testing Cube class
 """
-from python_utils.math_utils.cube.cube import Cube
+from pyutils.math_utils.cube.cube import Cube
 
 def main() -> None:
     """Create an instance of the Cube class and test some of it's functions.

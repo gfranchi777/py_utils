@@ -1,6 +1,6 @@
 """Module alphabet.py
 """
-from python_utils.cipher_utils.data_classes.constants import Constants
+from pyutils.cipher_utils.data_classes.constants import Constants
 
 import string
 

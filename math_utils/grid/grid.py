@@ -5,7 +5,7 @@ import sys
 
 import numpy
 
-from python_utils.math_utils.types.grid_types import GridTypes
+from pyutils.math_utils.types.grid_types import GridTypes
 
 class Grid:
     """Create a grid of size length x width and of type GridType
