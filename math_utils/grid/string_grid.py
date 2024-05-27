@@ -1,9 +1,9 @@
-from pyutils.math_utils.grid.grid import Grid, GridTypes
+from py_utils.math_utils.grid.grid import Grid, GridTypes
 
 
 class StringGrid(Grid):
-    def __init__(self, length: int, width: int) -> None:
-        super().__init__(length, width, GridTypes.STRING)
+    def __init__(self, width: int, length: int) -> None:
+        super().__init__(width, length, GridTypes.STRING)
 
     def get_value_at(self, row_col_position: list[int]) -> str:
         value_at_index = ''

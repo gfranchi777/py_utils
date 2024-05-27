@@ -5,7 +5,7 @@ import sys
 
 import numpy
 
-from pyutils.math_utils.types.grid_types import GridTypes
+from py_utils.math_utils.types.grid_types import GridTypes
 
 class Grid:
     """Create a grid of size length x width and of type GridType
@@ -24,14 +24,14 @@ class Grid:
         Raises:
             None
     """
-    def __init__(self, length: int, width: int, grid_type: GridTypes) -> None:
+    def __init__(self, width: int, length: int, grid_type: GridTypes) -> None:
         if self.is_valid_dimension(length, width):
             self._is_initialized = False
             self._length = length
             self._width = width
             self._type = grid_type
 
-            self._grid = numpy.full((length, width), grid_type.value["initial_value"],
+            self._grid = numpy.full((width, length), grid_type.value["initial_value"],
                                     dtype=grid_type.value["data_type"])
         else:
             sys.exit(
@@ -114,7 +114,7 @@ class Grid:
         """Get maximum grid index"""
         return [self.max_horizontal_boundary, self.max_vertical_boundary]
 
-    def is_valid_dimension(self, length: int, width: int) -> bool:
+    def is_valid_dimension(self, width: int, length: int) -> bool:
         """Determine if the dimensions being used to create the grid are valid
         
         Args:
@@ -129,12 +129,7 @@ class Grid:
             True if the dimensions passed are valid
             False otherwise
         """
-        is_valid_dimension = False
-
-        if length > 0 and width > 0:
-            is_valid_dimension = True
-
-        return is_valid_dimension
+        return (length > 0 and width > 0)
 
     def is_valid_position(self, row_col_position: list[int]) -> bool:
         """Determine if the position being passed is within the grid bounds
@@ -151,13 +146,13 @@ class Grid:
         is_valid_position = False
 
         if (
-            self.min_horizontal_boundary
-            <= row_col_position[0]
-            <= self.max_horizontal_boundary
-        ) and (
             self.min_vertical_boundary
-            <= row_col_position[1]
+            <= row_col_position[0]
             <= self.max_vertical_boundary
+        ) and (
+            self.min_horizontal_boundary
+            <= row_col_position[1]
+            <= self.max_horizontal_boundary
         ):
             is_valid_position = True
 
@@ -179,7 +174,7 @@ class Grid:
         for _ in range(num_coords):
             random_coords.insert(
                 random.randint(
-                    self.min_horizontal_boundary, self.max_horizontal_boundary
+                    self.min_vertical_boundary, self.max_vertical_boundary
                 ),
                 random.randint(
                     self.min_horizontal_boundary, self.max_horizontal_boundary
@@ -211,7 +206,7 @@ class Grid:
             None
         """
         padding = len(
-            str(max(self.max_horizontal_boundary, self.max_vertical_boundary))
+            str(max(self.max_vertical_boundary, self.max_horizontal_boundary))
         )
 
         for row, row_val in enumerate(self._grid):
