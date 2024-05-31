@@ -1,33 +1,33 @@
-"""Module printing
-"""
+'''Module printing
+'''
 import numpy as np
 
 class Printing:
-    """Class Printing
-    """
+    '''Class Printing
+    '''
     def __init__(self) -> None:
         pass
 
     def print_1d_array(self, array: np.ndarray) -> None:
-        """Print the contents of a normal array
+        '''Print the contents of a normal array
         
         Args:
             array: A standard 1D array
 
         Returns:
             None
-        """
+        '''
         print(f"{array}\n")
 
     def print_2d_array(self, array: np.ndarray) -> None:
-        """Print the contents of a 2d array
+        '''Print the contents of a 2d array
         
         Args:
             array: A 2D array
 
         Returns:
             None
-        """
+        '''
         print("[")
 
         for row, row_val in enumerate(array):
@@ -39,14 +39,14 @@ class Printing:
         print("\n]\n")
 
     def print_3d_array(self, array: np.ndarray) -> None:
-        """Print the contents of a 2d array
+        '''Print the contents of a 2d array
         
         Args:
             array: A 3D array
 
         Returns:
             None
-        """
+        '''
         print("[")
 
         for width, width_val in enumerate(array):

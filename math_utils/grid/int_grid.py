@@ -1,7 +1,7 @@
 from py_utils.math_utils.grid.grid import Grid, GridTypes
 
 class IntGrid(Grid):
-    """Create a Grid object with integer values.
+    '''Create a Grid object with integer values.
     
         Args:
             length:
@@ -14,7 +14,7 @@ class IntGrid(Grid):
         
         Raises:
             None
-    """
+    '''
     def __init__(self, width: int, length: int) -> None:
         super().__init__(width, length, GridTypes.INT)
 

@@ -1,11 +1,11 @@
-"""Module constants
-"""
+'''Module constants
+'''
 from dataclasses import dataclass
 
 @dataclass
 class Constants:
-    """Class constants
-    """
+    '''Class constants
+    '''
     NUM_LETTERS_IN_ALPHABET = 26
     ASCII_UPPER_CASE_LETTER_START = 65
     ASCII_UPPER_CASE_LETTER_END = 90

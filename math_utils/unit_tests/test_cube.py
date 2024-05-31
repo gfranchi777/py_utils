@@ -1,9 +1,9 @@
-"""Module used for testing Cube class
-"""
+'''Module used for testing Cube class
+'''
 from py_utils.math_utils.cube.cube import Cube
 
 def main() -> None:
-    """Create an instance of the Cube class and test some of it's functions.
+    '''Create an instance of the Cube class and test some of it's functions.
     
         Args: 
             None
@@ -13,7 +13,7 @@ def main() -> None:
     
         Raises:
             None
-    """
+    '''
     cube_length = 3
 
     cube = Cube(cube_length)

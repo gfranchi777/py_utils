@@ -30,22 +30,22 @@ class Logger(Protocol):
     def _log_message(self) -> LogMessage:
         ...
 
-    """Function which will output the log entry"""
+    '''Function which will output the log entry'''
     def _log(self, log_message: LogMessage) -> None:
         ...
 
-    """ Function which will build a LogMessage """
+    ''' Function which will build a LogMessage '''
     def _prepare_log(self, message_type: MessageType, calling_method: str, message: str) -> LogMessage:
         ...
 
-    """ Function to be called when we want to log a DEBUG message """
+    ''' Function to be called when we want to log a DEBUG message '''
     def debug(self, calling_method: str, message: str) -> None:
         ...
 
-    """ Function to be called when we want to log an ERROR message """
+    ''' Function to be called when we want to log an ERROR message '''
     def error(self, calling_method: str, message: str) -> None:
         ...
 
-    """ Function to be called when we want to log an INFO message """
+    ''' Function to be called when we want to log an INFO message '''
     def info(self, calling_method: str, message: str) -> None:
         ...
