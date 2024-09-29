@@ -25,7 +25,7 @@ class Grid:
             None
     '''
     def __init__(self, width: int, length: int, grid_type: GridTypes) -> None:
-        if self.is_valid_dimension(length, width):
+        if self.is_valid_dimension(width, length):
             self._is_initialized = False
             self._length = length
             self._width = width
