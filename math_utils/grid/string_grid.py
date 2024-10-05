@@ -6,10 +6,12 @@ class StringGrid(Grid):
         super().__init__(width, length, GridTypes.STRING)
 
     def get_value_at(self, row_col_position: list[int]) -> str:
-        value_at_index = ''
+        value_at_index = ""
 
         if self.is_valid_position(row_col_position):
-            value_at_index = self._grid[row_col_position[0]][row_col_position[1]]
+            value_at_index = self._grid[row_col_position[0]][
+                row_col_position[1]
+            ]
 
         return value_at_index
 

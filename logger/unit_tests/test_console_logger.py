@@ -7,10 +7,12 @@ def main() -> None:
 
     test_protocol(console_logger)
 
+
 def test_protocol(logger: Logger) -> None:
     logger.debug("test_protocol", "This Is A Debug Message")
     logger.error("test_protocol", "This Is An Error Message")
     logger.info("test_protocol", "This Is An Info Message")
+
 
 if __name__ == "__main__":
     main()
